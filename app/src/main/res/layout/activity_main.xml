@@ -1,0 +1,187 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="#F0F4F8"
+    tools:context=".MainActivity">
+
+    <TextView
+        android:id="@+id/titleTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="IBeacons Detection"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        android:textColor="#1E2A3B"
+        android:layout_gravity="center_horizontal"
+        android:padding="16dp"/>
+
+    <ListView
+        android:id="@+id/beaconListView"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:divider="@android:color/transparent"
+        android:dividerHeight="8dp"
+        android:paddingLeft="16dp"
+        android:paddingRight="16dp" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="16dp"
+        android:background="#FFFFFF"
+        android:elevation="4dp">
+
+        <androidx.appcompat.widget.SwitchCompat
+            android:id="@+id/modeSwitch"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Mode Apprentissage"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:textColor="#1E2A3B"
+            android:layout_marginBottom="8dp"/>
+
+        <LinearLayout
+            android:id="@+id/learningLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:visibility="visible">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+                <EditText
+                    android:id="@+id/xCoordinate"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:hint="Coordonnée X"
+                    android:inputType="numberDecimal"
+                    android:layout_marginEnd="8dp"/>
+                <EditText
+                    android:id="@+id/yCoordinate"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:hint="Coordonnée Y"
+                    android:inputType="numberDecimal"/>
+            </LinearLayout>
+            <Button
+                android:id="@+id/saveButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="Enregistrer le point"
+                android:backgroundTint="#2196F3"
+                android:textColor="@android:color/white"/>
+            <ProgressBar
+                android:id="@+id/learningProgressBar"
+                style="?android:attr/progressBarStyleHorizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:indeterminate="true"
+                android:visibility="gone"
+                tools:visibility="visible"/>
+
+            <TextView
+                android:id="@+id/learningCountdownText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:text="Enregistrement... 30s"
+                android:visibility="gone"
+                tools:visibility="visible"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/localizationLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:visibility="gone"
+            tools:visibility="visible">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="Position Estimée (X, Y) :"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/estimatedPositionTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Calcul en cours..."
+                android:textSize="18sp"
+                android:textColor="@android:color/holo_blue_dark" />
+            <Button
+                android:id="@+id/startLocalizationButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="Estimer ma position (30s)"
+                android:backgroundTint="#673AB7"
+                android:textColor="@android:color/white"
+                android:textStyle="bold"/>
+            <ProgressBar
+                android:id="@+id/localizationProgressBar"
+                style="?android:attr/progressBarStyleHorizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:indeterminate="true"
+                android:visibility="gone"
+                tools:visibility="visible"/>
+
+            <TextView
+                android:id="@+id/localizationCountdownText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:text="Calcul en cours... 30s"
+                android:visibility="gone"
+                tools:visibility="visible"/>
+            <Button
+                android:id="@+id/toggleCsvButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="Afficher/Masquer"
+                android:backgroundTint="#607D8B"
+                android:textColor="@android:color/white"
+                android:drawableStart="@android:drawable/ic_menu_sort_by_size"
+                android:paddingStart="16dp"
+                android:paddingEnd="16dp"/>
+
+            <TextView
+                android:id="@+id/csvContentTextView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Aucun fichier chargé."
+                android:textSize="12sp"
+                android:textColor="#1E2A3B"
+                android:background="#EEEEEE"
+                android:padding="8dp"
+                android:layout_marginTop="4dp"
+                android:typeface="monospace"/>
+            <Button
+                android:id="@+id/deleteCsvButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:layout_gravity="end"
+                android:text="Réinitialiser"
+                android:backgroundTint="@android:color/holo_red_light"
+                android:textColor="@android:color/white"/>
+        </LinearLayout>
+
+    </LinearLayout>
+</LinearLayout>
